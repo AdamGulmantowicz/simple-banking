@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  color: var(--col-text-primary);
+  font-family: var(--font-primary);
+  background-color: var(--col-primary);
+}
+
+:root {
+  --col-primary-dark: #303f9f;
+  --col-primary: #3f51b5;
+  --col-primary-light: #c5cae9;
+  --col-primary-text: #ffffff;
+  --col-accent: #8bc34a;
+  --col-text-primary: #212121;
+  --col-text-secondary: #757575;
+  --col-divider: #bdbdbd;
+  --font-primary: "Roboto", sans-serif;
+  --box-sha-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+a,
+a:link,
+a:visited,
+a:hover {
+  color: currentColor;
+}
+
+/* layout */
+
+.container {
+  max-width: 1024px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box {
+  padding: 2rem;
+  background-color: var(--col-primary-text);
+  border-radius: 2px;
+  box-shadow: var(--box-sha-1);
+}
+
+/* components */
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--col-primary-text);
+}
+
+h1 {
+  color: var(--col-primary-text);
+  font-weight: 400;
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.button {
+  font-family: var(--font-primary);
+  background-color: var(--col-primary);
+  color: var(--col-primary-text);
+  border: none;
+  outline: none;
+  padding: 1rem 4rem;
+  border-radius: 2px;
+  box-shadow: var(--box-sha-1);
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: var(--col-primary-dark);
+}
+
+input {
+  background-color: var(--col-primary-text);
+  border: 1px solid var(--col-divider);
+  outline: none;
+  font-family: var(--font-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  color: var(--col-text-primary);
+}
+
+input::placeholder {
+  color: var(--col-text-primary);
+}
+
+.nav {
+  display: flex;
+  color: var(--col-primary-text);
+  background-color: var(--col-primary-dark);
+}
+
+.nav__item {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  background-color: var(--col-primary-dark);
+  transition: background-color 0.3s;
+}
+
+.nav__item:hover {
+  background-color: var(--col-primary);
+}
+
+/* header */
+
+.main {
+  flex-grow: 2;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}

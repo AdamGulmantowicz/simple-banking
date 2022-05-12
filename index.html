@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Your Finance</title>
+</head>
+
+<body>
+
+  <div class="app">
+    <header class="header">
+      <nav class="nav" role="navigation" aria-label="main navigation">
+        <a class="nav__item" data-page data-goto="home">
+          <svg class="icon">
+            <use xlink:href="./images/symbol-defs.svg#icon-home" />
+          </svg>
+        </a>
+        <a class="nav__item" data-page data-auth="0" data-goto="login">
+          Log in
+        </a>
+        <a class="nav__item" data-page data-auth="0" data-goto="sign-up">
+          Sign Up
+        </a>
+        <a class="nav__item" data-page data-auth="1" id="sign-out">
+          Sign Out
+        </a>
+      </nav>
+      <h1 data-page="login">Login</h1>
+      <h1 data-page="home">Welcome to our banking app!</h1>
+      <h1 data-page="sign-up">Register</h1>
+    </header>
+    <main class="container box main">
+      <div data-page="login" class="hide">
+        <form id="loginForm">
+          <input name="email" required class="input is-primary" type="email" placeholder="Email address">
+          <input name="password" required class="input is-primary" type="password" placeholder="Password">
+
+          <button type="submit" class="button is-primary">Login</button>
+        </form>
+      </div>
+      <div data-page="sign-up" class="hide">
+        <form id="signupForm">
+          <input name="first-name" required class="input is-primary" type="text" placeholder="First name">
+          <input name="last-name" required class="input is-primary" type="text" placeholder="Last name">
+          <input name="email" required class="input is-primary" type="email" placeholder="Email address">
+          <input name="password" required class="input is-primary" type="password" placeholder="Password">
+          <input name="password-confirm" required class="input is-primary" type="password"
+            placeholder="Password confirm">
+
+          <button type="submit" class="button is-primary">Register</button>
+        </form>
+      </div>
+      <div data-page="home" id="home">
+        To jest strona główna
+      </div>
+      <div data-page="account" class="hide">
+        To jest strona użytkownika
+      </div>
+    </main>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
