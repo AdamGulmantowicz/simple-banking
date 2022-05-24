@@ -46,10 +46,10 @@ const users = [
         saldo: 303,
       },
       {
-        amount: 32.2,
+        amount: 34.2,
         accountNumber: "2343 2342 4534 3453",
         prevSaldo: 303,
-        saldo: 335.2,
+        saldo: 337.2,
       },
     ],
   },

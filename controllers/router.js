@@ -10,7 +10,7 @@ function handlePageRequest(title = "", renderFunction) {
   const rootEl = document.querySelector("main");
   const h1El = document.querySelector("h1");
   rootEl.innerHTML = renderFunction();
-  h1El.innerText = title;
+  h1El.innerHTML = title;
 }
 
 const router = {
@@ -84,11 +84,11 @@ const router = {
 
       // TODO I zaktualizuj tytuł na podstawie salda aktualnego usera
       // zmień w handlePageRequest h1El.innerText na h1El.innerHTML
-
       // TODO II przekaż do funkcji accountPage listę transakcji użytkownika
-      handlePageRequest("Your funds: <br> 233$", accountPage);
-
+      handlePageRequest(`Hello! ${auth.currentUser.firstName} ${auth.currentUser.lastName} </br> Your funds: ${auth.currentUser.transactions[auth.currentUser.transactions.length - 1].saldo}$`, accountPage);
       // TODO III Zrób obsługę formularza z accountPage
+
+      
     },
   },
 };
