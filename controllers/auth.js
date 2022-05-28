@@ -11,6 +11,8 @@ const auth = {
     if (loggedUser) {
       this.isLoggedIn = true;
       this.currentUser = loggedUser;
+      window.localStorage.setItem("currentUser", loggedUser.email);
+      window.localStorage.setItem("password", loggedUser.password);
       return loggedUser;
     }
 
@@ -36,6 +38,8 @@ const auth = {
       users.push(user);
       this.isLoggedIn = true;
       this.currentUser = loggedUser;
+      window.localStorage.setItem("currentUser", loggedUser.email);
+      window.localStorage.setItem("password", loggedUser.password);
       return user;
     }
 
@@ -44,6 +48,8 @@ const auth = {
   signout() {
     this.isLoggedIn = false;
     this.currentUser = null;
+    window.localStorage.removeItem("currentUser");
+    window.localStorage.removeItem("password");
     router.goTo("/");
   },
 };
