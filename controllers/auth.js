@@ -1,8 +1,11 @@
 import users from "../data/users.js";
+import router from "./router.js";
+
+const userFromLocalStorage = JSON.parse(window.localStorage.getItem("user"));
 
 const auth = {
-  isLoggedIn: false,
-  currentUser: null,
+  isLoggedIn: userFromLocalStorage ? userFromLocalStorage : false,
+  currentUser: userFromLocalStorage ? userFromLocalStorage : null,
   login(user) {
     const loggedUser = users.find(function (item) {
       return user.email === item.email && user.password === item.password;
@@ -11,8 +14,7 @@ const auth = {
     if (loggedUser) {
       this.isLoggedIn = true;
       this.currentUser = loggedUser;
-      window.localStorage.setItem("currentUser", loggedUser.email);
-      window.localStorage.setItem("password", loggedUser.password);
+      window.localStorage.setItem("user", JSON.stringify(loggedUser));
       return loggedUser;
     }
 
@@ -38,8 +40,8 @@ const auth = {
       users.push(user);
       this.isLoggedIn = true;
       this.currentUser = loggedUser;
-      window.localStorage.setItem("currentUser", loggedUser.email);
-      window.localStorage.setItem("password", loggedUser.password);
+      window.localStorage.setItem("user", JSON.stringify(loggedUser));
+
       return user;
     }
 
@@ -48,8 +50,8 @@ const auth = {
   signout() {
     this.isLoggedIn = false;
     this.currentUser = null;
-    window.localStorage.removeItem("currentUser");
-    window.localStorage.removeItem("password");
+    window.localStorage.removeItem("user");
+
     router.goTo("/");
   },
 };
