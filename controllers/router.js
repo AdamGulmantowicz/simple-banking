@@ -4,6 +4,7 @@ import loginPage from "../views/loginPage.js";
 import renderNavigation from "../views/navigation.js";
 import registerPage from "../views/registerPage.js";
 import auth from "./auth.js";
+import transactions from "./transactions.js";
 
 function handlePageRequest(title = "", renderFunction) {
   renderNavigation(auth.isLoggedIn);
@@ -82,8 +83,36 @@ const router = {
         return;
       }
 
-      handlePageRequest(`Hello! ${auth.currentUser.firstName} ${auth.currentUser.lastName} </br> Your funds: ${auth.currentUser.transactions[auth.currentUser.transactions.length - 1].saldo}$`,  function () {
-        return accountPage(auth.currentUser.transactions)
+      handlePageRequest(
+        `Hello, ${auth.currentUser.firstName} ${
+          auth.currentUser.lastName
+        } </br> Your funds: ${
+          auth.currentUser.transactions[
+            auth.currentUser.transactions.length - 1
+          ].saldo
+        }$`,
+        function () {
+          return accountPage(auth.currentUser.transactions);
+        }
+      );
+
+      const transactionForm = document.getElementById("transactionForm");
+
+      transactionForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(transactionForm);
+
+        const accountNumber = formData.get("account-number");
+        const amount = formData.get("amount");
+
+        if (!accountNumber && !amount) return;
+
+        if (
+          transactions.create(auth.currentUser.email, amount, accountNumber)
+        ) {
+          transactionForm.reset();
+          router.goTo("/account");
+        }
       });
     },
   },

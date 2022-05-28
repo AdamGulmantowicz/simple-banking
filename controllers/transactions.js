@@ -1,9 +1,26 @@
 import users from "../data/users.js";
 
-// TODO III funkcja create powinna zaktualizować transakcje aktualnego użytkownika
 const transactions = {
-  create() {},
-  getAll() {},
+  create(email, amount, accountNumber) {
+    const transactionUser = users.find((user) => user.email === email);
+
+    const lastTransaction =
+      transactionUser.transactions[transactionUser.transactions.length - 1];
+
+    const currentTransaction = {
+      amount,
+      accountNumber,
+      prevSaldo: lastTransaction.saldo,
+      saldo: lastTransaction.saldo - amount,
+    };
+
+    if (currentTransaction.saldo < 0) {
+      return null;
+    }
+
+    transactionUser.transactions.push(currentTransaction);
+    return currentTransaction;
+  },
 };
 
 export default transactions;
