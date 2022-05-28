@@ -14,12 +14,14 @@ export default function accountPage(transactionsList = []) {
       <details class="box">
         <summary><strong>Transaction history</strong></summary>
         <ul class="list mt-1">
-          <!-- TODO II Tutaj renderuj htmla do elementów -->
+        ${transactionsList.map(function (transaction) {
+          return /* html */ `<li class="list__el">
+          ${'Account number: ' + transaction.accountNumber}<br>
+          ${'Amount: ' + transaction.amount + '$'}<br>
+          ${'Account balance: ' + transaction.saldo + '$'}<br>
+          ${'Previous account ballance: ' + transaction.prevSaldo + '$'}<br>
+          </li>`}).join('')}
         </ul>
       </details>
     </div>`;
 }
-
-//  ${transactionsList.map(transaction => /* html */ `<li class="list__el">
-//   ${transaction.accountNumber}
-// </li>`).join('')}

@@ -82,13 +82,9 @@ const router = {
         return;
       }
 
-      // TODO I zaktualizuj tytuł na podstawie salda aktualnego usera
-      // zmień w handlePageRequest h1El.innerText na h1El.innerHTML
-      // TODO II przekaż do funkcji accountPage listę transakcji użytkownika
-      handlePageRequest(`Hello! ${auth.currentUser.firstName} ${auth.currentUser.lastName} </br> Your funds: ${auth.currentUser.transactions[auth.currentUser.transactions.length - 1].saldo}$`, accountPage);
-      // TODO III Zrób obsługę formularza z accountPage
-
-      
+      handlePageRequest(`Hello! ${auth.currentUser.firstName} ${auth.currentUser.lastName} </br> Your funds: ${auth.currentUser.transactions[auth.currentUser.transactions.length - 1].saldo}$`,  function () {
+        return accountPage(auth.currentUser.transactions)
+      });
     },
   },
 };
