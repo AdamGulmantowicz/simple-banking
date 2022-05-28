@@ -84,9 +84,9 @@ const router = {
 
       // TODO I zaktualizuj tytuł na podstawie salda aktualnego usera
       // zmień w handlePageRequest h1El.innerText na h1El.innerHTML
-
-      // TODO II przekaż do funkcji accountPage listę transakcji użytkownika
-      handlePageRequest("Your funds: <br> 233$", accountPage);
+      handlePageRequest("Your funds: <br> 233$", function () {
+        return accountPage(auth.currentUser.transactions)
+      });
 
       // TODO III Zrób obsługę formularza z accountPage
     },
