@@ -6,9 +6,9 @@ const userFromLocalStorage = JSON.parse(window.localStorage.getItem("user"));
 const auth = {
   isLoggedIn: userFromLocalStorage ? userFromLocalStorage : false,
   currentUser: userFromLocalStorage ? userFromLocalStorage : null,
-  login(user) {
-    const loggedUser = users.find(function (item) {
-      return user.email === item.email && user.password === item.password;
+  login({ email: loggedEmail, password: loggedPassword }) {
+    const loggedUser = users.find(function ({ email, password }) {
+      return loggedEmail === email && loggedPassword === password;
     });
 
     if (loggedUser) {

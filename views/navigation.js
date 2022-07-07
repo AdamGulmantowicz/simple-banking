@@ -5,7 +5,7 @@ export default function renderNavigation(isLoggedIn = false) {
   const navigationEl = document.getElementById("navigation");
 
   navigationEl.innerHTML = /* html */ `
-    <a class="nav__item" data-goto="/">
+    <a class="nav__item" href="#/">
       <svg class="icon">
         <use xlink:href="./images/symbol-defs.svg#icon-home" />
       </svg>
@@ -17,10 +17,10 @@ export default function renderNavigation(isLoggedIn = false) {
           Sign Out
         </a>`
         : /* html */ `
-        <a class="nav__item" data-goto="/login">
+        <a class="nav__item" href="#/login">
           Log in
         </a>
-        <a class="nav__item" data-goto="/register">
+        <a class="nav__item" href="#/register">
           Sign Up
         </a>`
     }
